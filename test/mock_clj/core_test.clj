@@ -11,7 +11,6 @@
 (deftest with-mock-basic
   (with-mock [type 1]
     (is (type "s") 1)
-    (println (meta type))
     (is (coll? (calls type))))
   (is (= java.lang.String (type "s"))))
 
