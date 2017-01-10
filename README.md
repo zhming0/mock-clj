@@ -22,23 +22,27 @@ If the right-hand side of a spec is a function, then the var-symbol will tempora
 ### Example 
 
 ```clojure
+
+(require ['mock-clj.core :as 'mc])
+
 (defn foo [a] (str "foo" a))
 
 (defn bar [a] (str (foo a) "bar"))
 
 (deftest test-bar
-  (with-mock [foo "oof"] ; equals to [foo (constantly "oof")] 
+  (mc/with-mock [foo "oof"] ; equals to [foo (constantly "oof")] 
     (is (= (bar "test") "oofbar"))
     ; Calls history
-    (is (= (calls foo) ["oof"]))
+    (is (= (mc/calls foo) [["test"]]))
     ; Last-all
-    (is (= (last-call foo) "oof"))
+    (is (= (mc/last-call foo) ["test"]))
     ; call-count
-    (is (= 1 (call-count foo)))
+    (is (= 1 (mc/call-count foo)))
     ; Called? 
-    (is (called? foo))
+    (is (mc/called? foo))
     ; Reset calls history
-    (reset-calls! foo)))
+    (mc/reset-calls! foo)))
+
 ```
 
 ## License
