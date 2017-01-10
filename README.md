@@ -1,5 +1,7 @@
 # mock-clj
 
+[![Build Status](https://travis-ci.org/zhming0/mock-clj.svg?branch=master)](https://travis-ci.org/zhming0/mock-clj)
+
 Minimalist & non-invasive API for mocking in Clojure. 
 It was accidently written when I was testing my code.
 Basically, it is a syntax sugar around `with-redefs`. 
