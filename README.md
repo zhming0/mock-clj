@@ -39,9 +39,7 @@ If the right-hand side of a spec is a function, then the var-symbol will tempora
     ; call-count
     (is (= 1 (mc/call-count foo)))
     ; Called? 
-    (is (mc/called? foo))
-    ; Reset calls history
-    (mc/reset-calls! foo)))
+    (is (mc/called? foo))))
 
 ```
 
