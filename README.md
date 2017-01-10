@@ -1,6 +1,7 @@
 # mock-clj
 
 [![Build Status](https://travis-ci.org/zhming0/mock-clj.svg?branch=master)](https://travis-ci.org/zhming0/mock-clj)
+[![Clojars Project](https://img.shields.io/clojars/v/mock-clj.svg)](https://clojars.org/mock-clj)
 
 Minimalist & non-invasive API for mocking in Clojure. 
 It was accidently written when I was testing my code.
