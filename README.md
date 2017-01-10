@@ -34,7 +34,7 @@ If the right-hand side of a spec is a function, then the var-symbol will tempora
     (is (= (bar "test") "oofbar"))
     ; Calls history
     (is (= (mc/calls foo) [["test"]]))
-    ; Last-all
+    ; Last-call
     (is (= (mc/last-call foo) ["test"]))
     ; call-count
     (is (= 1 (mc/call-count foo)))
