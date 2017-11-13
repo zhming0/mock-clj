@@ -16,8 +16,8 @@ Basically, it is a syntax sugar around `with-redefs`.
 `specs => var-symbol value-expr/functions`
 
 Temporarily redefines `var` while executing `body`. 
-If the right-hand side of a spec is a value, then it equals to create a function constantly return the value (stub).
-If the right-hand side of a spec is a function, then the var-symbol will temporaily be replaced by the function directly.
+If the right-hand side of a spec is a value, then it will create a function constantly returning the value (stub).
+If the right-hand side of a spec is a function, then the var-symbol will temporarily be replaced by the function.
 
 ### Example 
 
