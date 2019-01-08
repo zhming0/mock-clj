@@ -1,6 +1,7 @@
 (ns mock-clj.core-test
   (:require [clojure.test :refer :all]
-            [mock-clj.core :refer :all]))
+            [mock-clj.core :refer :all]
+            [mock-clj.sample-private-ns]))
 
 (defn foo [a & rst] 
   (str "foo" a))
@@ -66,3 +67,9 @@
     (is (called? foo))
     (reset-calls! foo)
     (is (not (called? foo)))))
+
+(deftest private-fn-test
+  (with-mock [mock-clj.sample-private-ns/private-fn (constantly "ok")]
+    (= "ok" (#'mock-clj.sample-private-ns/private-fn 2))
+    (is (called? #'mock-clj.sample-private-ns/private-fn))
+    (is (= (last-call #'mock-clj.sample-private-ns/private-fn) [2]))))

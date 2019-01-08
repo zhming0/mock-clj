@@ -19,7 +19,9 @@ Temporarily redefines `var` while executing `body`.
 If the right-hand side of a spec is a value, then it will create a function constantly returning the value (stub).
 If the right-hand side of a spec is a function, then the var-symbol will temporarily be replaced by the function.
 
-### Example 
+### Features & Example 
+
+#### Track mock's invocation history
 
 ```clojure
 
@@ -42,6 +44,22 @@ If the right-hand side of a spec is a function, then the var-symbol will tempora
     (is (mc/called? foo))))
 
 ```
+
+#### Mock private functions with ease
+
+```clojure
+(ns ns-a)
+(defn- g [] true)
+(defn f [a] (g))
+
+(ns ns-b)
+(deftest mock-private-test
+  (with-mock [#'ns-a/g "baz"]
+    (is (= (f "foo") "baz"))))
+
+```
+
+(Note: generally, it's not a good idea to mock private functions)
 
 ## License
 
