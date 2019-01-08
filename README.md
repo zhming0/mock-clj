@@ -55,7 +55,7 @@ If the right-hand side of a spec is a function, then the var-symbol will tempora
 (ns ns-b)
 (deftest mock-private-test
   (with-mock [#'ns-a/g "baz"]
-    (is (= (f "foo") "baz"))))
+    (is (= (#'ns-a/f "foo") "baz"))))
 
 ```
 
