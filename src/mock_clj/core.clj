@@ -19,16 +19,18 @@
 
 (defmacro make-mock 
   ([] `(make-mock nil))
-  ([stub] 
-   `(let [~'state (atom [])]
-     (with-meta
-       (fn [& ~'args] 
-         (swap! ~'state conj ~'args)
-         ; If stub is a function, execute it
-         (if (fn? ~stub) 
-           (apply ~stub ~'args)
-           ~stub))
-       {:args ~'state}))))
+  ([stub]
+   (let [stub-symbol-name (gensym)]
+     `(let [~'state (atom [])
+            ~stub-symbol-name ~stub]
+        (with-meta
+          (fn [& ~'args]
+            (swap! ~'state conj ~'args)
+            ; If stub is a function, execute it
+            (if (fn? ~stub-symbol-name)
+              (apply ~stub-symbol-name ~'args)
+              ~stub-symbol-name))
+          {:args ~'state})))))
 
 (defn- gen-redefs [[m stub & spec]]
   (let [sm (try-strip-var m)]

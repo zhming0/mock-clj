@@ -32,6 +32,13 @@
     (is (= (foo 4) 3))
     (is (= (type 4) "SOME"))))
 
+(deftest with-mock-calling-same-function
+  (with-mock [foo (foo "bar")]
+    (is (= (foo 1 2 3) "foobar")))
+
+  (with-mock [foo (constantly (foo "bar"))]
+    (is (= (foo 1 2 3) "foobar"))))
+
 (deftest calls-test
   (with-mock [foo 5]
     (foo 1 2 3)
