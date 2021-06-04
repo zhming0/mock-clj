@@ -4,8 +4,8 @@
 [![Clojars Project](https://img.shields.io/clojars/v/mock-clj.svg)](https://clojars.org/mock-clj)
 
 Minimalist & non-invasive API for mocking in Clojure. 
-It was accidently written when I was testing my code.
-Basically, it is a syntax sugar around `with-redefs`. 
+Overall, it is a syntax sugar around `with-redefs`. 
+It leverages Clojure's unique metadata mechanism to offer common test/assertion utilities for mocking/stubbing.
 
 ## Usage
 
