@@ -43,7 +43,7 @@
   (with-mock [foo 5]
     (foo 1 2 3)
     (foo 5 6 6)
-    (is (calls foo) [[1 2 3] [5 6 6]])))
+    (is (= (calls foo) [[1 2 3] [5 6 6]]))))
 
 (deftest last-call-test
   (with-mock [foo "ok"]
